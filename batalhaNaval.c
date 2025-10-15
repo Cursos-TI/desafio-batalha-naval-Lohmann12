@@ -1,32 +1,41 @@
 #include <stdio.h>
 
 int main() {
-    char linha[11] = {' ','A','B','C','D','E','F','G','H','I','J'};
+    char colunas[11] = {'A','B','C','D','E','F','G','H','I','J'};
+    int tabuleiro[10][10];
+    int tamanhoNavio = 3;
     
-    int tabuleiro[10][11];
-
-    for(int a = 0; a < 10; a++) {
-        for(int j = 0; j < 11; j++) {
-            if (j == 0)
-                tabuleiro[a][j] = a + 1;
-            else
-                tabuleiro[a][j] = 0;
+    for(int coluna = 0; coluna < 10; coluna++) {
+        for(int linha = 0; linha < 10; linha++) {
+            tabuleiro[coluna][linha] = 0;
         }
     }
-
-    printf("%c %c %c %c %c %c %c %c %c %c %c\n", linha[0], linha[1], linha[2], linha[3], linha[4], linha[5], linha[6], linha[7], linha[8], linha[9], linha[10]);
     
-    tabuleiro[4][2] = 3;
-    tabuleiro[4][3] = 3;
-    tabuleiro[4][4] = 3;
+    tabuleiro[5][1] = 3; 
+    tabuleiro[5][2] = 3;
+    tabuleiro[5][3] = 3;
+    
+    tabuleiro[6][4] = 3;
+    tabuleiro[7][4] = 3;
+    tabuleiro[8][4] = 3;
 
-    tabuleiro[6][5] = 3;
-    tabuleiro[7][5] = 3;
-    tabuleiro[8][5] = 3;
-
-    for(int a = 0; a < 10; a++) {
-        for(int j = 0; j < 11; j++) {
-            printf("%d ", tabuleiro[a][j]);
+    for (int diagonal = 0; diagonal < tamanhoNavio; diagonal++) {
+        tabuleiro[2 + diagonal][2 + diagonal] = 3;
+    }
+    for (int diagonal = 0; diagonal < tamanhoNavio; diagonal++) {
+        tabuleiro[2 + diagonal][8 - diagonal] = 3;
+    }
+    
+    printf("  ");
+    for(int linha = 0; linha < 10; linha++) {
+        printf("%c ", colunas[linha]);
+    }
+    printf("\n");
+    
+    for(int coluna = 0; coluna < 10; coluna++) {
+        printf("%d ", coluna + 1);
+        for(int linha = 0; linha < 10; linha++) {
+            printf("%d ", tabuleiro[coluna][linha]);
         }
         printf("\n");
     }
