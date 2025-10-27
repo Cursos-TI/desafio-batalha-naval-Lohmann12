@@ -31,7 +31,7 @@ int main() {
     int origemColunaCone = 7;
 
     for (int distancia = 1; distancia <= alcanceCone; distancia++) {
-        int largura = distancia - 1;  // 🔥 Mude aqui!
+        int largura = distancia - 1;
         for (int deslocamento = -largura; deslocamento <= largura; deslocamento++) {
             int linha = origemLinhaCone - distancia;
             int coluna = origemColunaCone + deslocamento;
